@@ -1,0 +1,27 @@
+logging:
+  level:
+    org.springframework.security: trace
+
+spring:
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          crm-client:
+            registration:
+              client-id: "crm"
+              client-secret: "{noop}crm"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "refresh_token"
+              redirect-uris:
+                - "http://127.0.0.1:8082/login/oauth2/code/spring"
+              post-logout-redirect-uris:
+                - "http://127.0.0.1:8082/"
+              scopes:
+                - "openid"
+                - "user.read"
+                - "user.write"
+            require-authorization-consent: true
